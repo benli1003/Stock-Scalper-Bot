@@ -42,3 +42,12 @@ def tradeSignal(data):
     
     #otherwise hold
     return 'HOLD'
+
+#execute trades based on signals
+def execute_trade(action):
+    if action == 'BUY':
+        api.submit_order(SYMBOL, SCALPING_QUANTITY, side='buy', type='market', time_in_force='gtc') #submit buy order
+        print(f"Bought {SCALPING_QUANTITY} shares of {SYMBOL}")
+    elif action == 'SELL':
+        api.submit_order(SYMBOL, SCALPING_QUANTITY, side='sell', type='market', time_in_force='gtc') #submit sell order
+        print(f"Sold {SCALPING_QUANTITY} shares of {SYMBOL}")
